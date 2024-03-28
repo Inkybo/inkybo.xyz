@@ -1,1 +1,3 @@
-# This is my personal site at [[inkybo.xyz]]
+# inkybo.xyz
+
+Personal website built solely in html and css
