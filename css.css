@@ -390,6 +390,6 @@ th {
 
 .minidisc {
   /*width: 740px;*/
-  padding-right: 180px;
-  padding-left: 180px;
+  padding-left: 85 px;
+  padding-right: 85 px;
 }
