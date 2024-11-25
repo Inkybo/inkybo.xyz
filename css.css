@@ -360,7 +360,7 @@ div.content {
     border-bottom:1px dotted #808080;
 }
 
-th {
+.table_header {
   width: 160px;
   text-align: left;
   background-color: #ececec;
@@ -386,10 +386,4 @@ th {
   position: fixed;
   bottom: -150px;
   right: -150px;
-}
-
-.minidisc {
-  /*width: 740px;*/
-  padding-left: 85px;
-  padding-right: 85px;
 }

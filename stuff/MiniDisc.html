@@ -1,135 +1,433 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <link rel="stylesheet" type="text/css" href="../css.css">
-    <link rel="icon" href="../favicon.gif" type="image/gif">
-    <meta charset="utf-8">
-    <title>design</title>
-  </head>
-  <body>
+<head>
+  <link rel="stylesheet" type="text/css" href="../css.css">
+  <link rel="icon" href="../favicon.gif" type="image/gif">
+  <meta charset="utf-8">
+  <title>design</title>
+</head>
+<style>
 
-    <div class="img_bottomcor">
-      <img src="corner_cat.svg">
+  .text-stroke-trick {
+      overflow:show;
+      white-space:nowrap;
+      -webkit-text-stroke: 3px #ffffff;
+      text-stroke: 3px #ffffff;
+      margin:0px;
+  }
+
+  .text-stroke-trick::after {
+      content: attr(data-text);
+      color: #534d74;
+      position: absolute;
+      top: 0px;
+      transform: translateX(-100%);
+      -webkit-text-stroke: 0px #ffffff88;
+      text-stroke: 0px #ffffff88;
+  }
+
+  .idcard {
+      width:675px;
+      height:396px;
+      /*background-color:#ffffff77; /*original card background*/
+      position:relative;
+      border-radius:16px;
+  }
+
+  .idcardbg {
+      background-image: url("sony-mdw80t_fd.png");
+      background-size:675px 612px;
+      width:675px;
+      height:612px;
+      margin-bottom:-396px;
+      border-radius:16px;
+      z-index:0;
+      position:absolute;
+      mix-blend-mode: multiply;
+      pointer-events:none;
+  }
+
+  .info {
+      position:absolute;
+      top:75px;
+      left:35px;
+      padding:0px;
+      height:100px;
+      color: #000; /*updates text color from that used in css label class*/
+  }
+
+  .disc_padding {
+      font-size:14px;
+      padding:0px 3px 0px 3px;
+      width:330px;
+      vertical-align:center;
+      line-height:16.5px;
+  }
+
+  .disc_padding {
+    /*width: 740px;*/
+    padding-left: 85px;
+    padding-right: 85px;
+  }
+
+  th {
+    border-bottom: 2px solid #A2AAAD;
+    position: sticky;
+    font-size:14px;
+    padding:0px 3px 0px 3px;
+    width:330px;
+    vertical-align:center;
+    position: sticky;
+    top:0;
+    background-color: #fff;
+    line-height:12px;
+  }
+
+  .tdots {
+      border-bottom: 2px dotted #A2AAAD;
+      line-height:12px;
+  }
+
+  .sticker {
+      border-collapse:separate;
+      border-radius:8px;
+      border:5px solid #A2AAAD;
+      border-spacing:3px;
+      background-color: #ffffff;
+      margin:0px;
+      padding:0px;
+      text-shadow:0px -1px 1px #fff, 0px 1px 1px #00000088;
+      clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%, 0 3%);
+      display: block;
+      height:487px;
+      overflow-y:auto;
+  }
+</style>
+<style id="card styles">
+  .idwrap3lol {
+      position:fixed;
+      top:calc(50% - 200px);
+      left:calc(50% - 350px);
+      /*transform: perspective(20em) rotateX(270deg) rotateY(30deg) scale(0.15); /*controlls ease-in/out rotation animation*/
+      transition: 0.5s ease-in-out;
+      z-index:30;
+      text-align:left;
+      opacity:0;
+      pointer-events:none;
+  }
+
+  .darkness {
+      opacity:0;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:20;
+      background-color:#000;
+      pointer-events:none;
+      transition:0.5s;
+  }
+
+  #card1:checked ~ .idwrap3lol {
+      position:fixed;
+      top:calc(50% - 200px);
+      left:calc(50% - 350px);
+      transform: perspective(50em) rotateX(0deg) rotateY(0deg) scale(1); /*controls size and static 3d rotation*/
+      transition: 0.65s cubic-bezier(0.2,1.05,0.75,1.05);
+      opacity:100;
+      pointer-events: auto
+  }
+
+  #card1:checked ~ .darkness {
+      opacity:0.5;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:20;
+      background-color:#000;
+      pointer-events:none;
+      transition:0.5s;
+  }
+
+  #card2:checked ~ .idwrap3lol {
+      position:fixed;
+      top:calc(50% - 200px);
+      left:calc(50% - 350px);
+      transform: perspective(50em) rotateX(0deg) rotateY(0deg) scale(1); /*controls size and static 3d rotation*/
+      transition: 0.65s cubic-bezier(0.2,1.05,0.75,1.05);
+      opacity:100;
+      pointer-events: auto
+  }
+
+  #card2:checked ~ .darkness {
+      opacity:0.5;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:20;
+      background-color:#000;
+      pointer-events:none;
+      transition:0.5s;
+  }
+
+  #card3:checked ~ .idwrap3lol {
+      position:fixed;
+      top:calc(50% - 200px);
+      left:calc(50% - 350px);
+      transform: perspective(50em) rotateX(0deg) rotateY(0deg) scale(1); /*controls size and static 3d rotation*/
+      transition: 0.65s cubic-bezier(0.2,1.05,0.75,1.05);
+      opacity:100;
+      pointer-events: auto
+  }
+
+  #card3:checked ~ .darkness {
+      opacity:0.5;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:20;
+      background-color:#000;
+      pointer-events:none;
+      transition:0.5s;
+  }
+
+  #card4:checked ~ .idwrap3lol {
+      position:fixed;
+      top:calc(50% - 200px);
+      left:calc(50% - 350px);
+      transform: perspective(50em) rotateX(0deg) rotateY(0deg) scale(1); /*controls size and static 3d rotation*/
+      transition: 0.65s cubic-bezier(0.2,1.05,0.75,1.05);
+      opacity:100;
+      pointer-events: auto
+  }
+
+  #card4:checked ~ .darkness {
+      opacity:0.5;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:20;
+      background-color:#000;
+      pointer-events:none;
+      transition:0.5s;
+  }
+</style>
+<body>
+
+  <div class="img_bottomcor">
+    <img src="../corner_cat.svg">
+  </div>
+
+  <div class="sidenav"> info: <br>
+    <li>├─><a href="../index.html">home</a></li>
+    <li>├─><a href="../about_site/about_site.html">about</a></li>
+    <li>├─><a href="../contact/contact.html">contact</a></li>
+    <li>
+      <input id="6" type="checkbox" class="box">
+      <label for="6">+ </label>
+      <a href="../updates/updates.html">updates</a>
+      <ul class="cool">
+        <li>└─><a href="../updates/changes.html">changes</a>
+        </li>
+      </ul>
+    </li>
+    <hr> Projects: <br>
+    <li>
+      <input id="1" type="checkbox" class="box" checked="checked">
+      <label for="1">+ </label>
+      <a href="../keyboards/keyboards.html">keyboards</a>
+      <ul class="cool">
+        <li>├─><a href="../keyboards/inky_75.html">Inky75</a></li>
+        <li>├─><a href="../keyboards/inky_ergo.html">InkyErgo</a></li>
+        <li>├─><a href="../keyboards/inky_plank.html">InkyPlank</a></li>
+        <li>├─><a href="../keyboards/inky_split.html">InkySplit</a></li>
+        <li>└─><a href="../keyboards/Pico_Macro.html">Pico_Macro</a></li>
+      </ul>
+    </li>
+    <li>
+      <input id="2" type="checkbox" class="box" checked="checked">
+      <label for="2">+ </label>
+      <a href="../linux_theming/linux_theming.html">linux theming</a>
+      <ul class="cool">
+        <li>├─><a href="../linux_theming/wm_themes.html">WM theme</a></li>
+        <li>└─><a href="../linux_theming/icons.html">icons</a></li>
+      </ul>
+    </li>
+    <hr> stuff: <br>
+    <li>
+      <input id="3" type="checkbox" class="box">
+      <label for="3">+ </label>
+      <a href="../photos/photos.html">photos</a>
+      <ul class="cool">
+        <li>├─><a href="../photos/35mm.html">35mm</a></li>
+        <li>├─><a href="../photos/120.html">120</a></li>
+        <li>└─><a href="../photos/digital.html">digital</a></li>
+      </ul>
+    <li>
+      <input id="4" type="checkbox" class="box">
+      <label for="4">+ </label>
+      <a href="../design/design.html">designs</a>
+      <ul class="cool">
+        <li>├─><a href="../design/logo.html">logo</a></li>
+        <li>└─><a href="../design/bilbcraft.html">bilbcraft</a></li>
+      </ul>
+    </li>
+    <li>├─><a href="../stuff/cameras.html">cameras</a></li>
+    <li>├─><a href="../stuff/MiniDisc.html">MiniDisc</a></li>
+    <li>└─><a href="../stuff/software.html">software</a></li>
+    </li>
+    <hr>
+    <img src="../sidenav_elements/linuxnow2.gif">
+    <br>
+    <a href="https://github.com/inkybo">
+      <img src="../sidenav_elements/github.png">
+    </a>
+  </div>
+
+  <div class="main" style="overflow:hidden;">
+
+    <div>
+      <p>
+      Ive been using things like spotify for the five or so years. After using
+      it for that long that I only really use it to listen to music that I
+      already enjoy and not using it to 'Discover' whatever their service thinks
+      I'll enjoy.
+      </p>
+      <p>
+      So in cutting those services out of my life I use tools to
+      download those playlists that ive curated on spotify and such to then
+      put them on my iPod, or in this case some Minidiscs!
+      </p>
+      <p>
+      Heres some of the playlists ive burn to discs so far :)
+      </p>
     </div>
-
-    <div class="sidenav"> info: <br>
-      <li>├─><a href="../index.html">home</a></li>
-      <li>├─><a href="../about_site/about_site.html">about</a></li>
-      <li>├─><a href="../contact/contact.html">contact</a></li>
-      <li>
-        <input id="6" type="checkbox" class="box">
-        <label for="6">+ </label>
-        <a href="../updates/updates.html">updates</a>
-        <ul class="cool">
-          <li>└─><a href="../updates/changes.html">changes</a>
-          </li>
-        </ul>
-      </li>
-      <hr> Projects: <br>
-      <li>
-        <input id="1" type="checkbox" class="box" checked="checked">
-        <label for="1">+ </label>
-        <a href="../keyboards/keyboards.html">keyboards</a>
-        <ul class="cool">
-          <li>├─><a href="../keyboards/inky_75.html">Inky75</a></li>
-          <li>├─><a href="../keyboards/inky_ergo.html">InkyErgo</a></li>
-          <li>├─><a href="../keyboards/inky_plank.html">InkyPlank</a></li>
-          <li>├─><a href="../keyboards/inky_split.html">InkySplit</a></li>
-          <li>└─><a href="../keyboards/Pico_Macro.html">Pico_Macro</a></li>
-        </ul>
-      </li>
-      <li>
-        <input id="2" type="checkbox" class="box" checked="checked">
-        <label for="2">+ </label>
-        <a href="../linux_theming/linux_theming.html">linux theming</a>
-        <ul class="cool">
-          <li>├─><a href="../linux_theming/wm_themes.html">WM theme</a></li>
-          <li>└─><a href="../linux_theming/icons.html">icons</a></li>
-        </ul>
-      </li>
-      <hr> stuff: <br>
-      <li>
-        <input id="3" type="checkbox" class="box">
-        <label for="3">+ </label>
-        <a href="../photos/photos.html">photos</a>
-        <ul class="cool">
-          <li>├─><a href="../photos/35mm.html">35mm</a></li>
-          <li>├─><a href="../photos/120.html">120</a></li>
-          <li>└─><a href="../photos/digital.html">digital</a></li>
-        </ul>
-      <li>
-        <input id="4" type="checkbox" class="box">
-        <label for="4">+ </label>
-        <a href="../design/design.html">designs</a>
-        <ul class="cool">
-          <li>├─><a href="../design/logo.html">logo</a></li>
-          <li>└─><a href="../design/bilbcraft.html">bilbcraft</a></li>
-        </ul>
-      </li>
-      <li>├─><a href="../stuff/cameras.html">cameras</a></li>
-      <li>├─><a href="../stuff/MiniDisc.html">MiniDisc</a></li>
-      <li>└─><a href="../stuff/software.html">software</a></li>
-      </li>
-      <hr>
-      <img src="../sidenav_elements/linuxnow2.gif">
-      <br>
-      <a href="https://github.com/inkybo">
-        <img src="../sidenav_elements/github.png">
-      </a>
-    </div>
-
-    <div class="main">
-
-      <div>
-        <p>
-        Ive been using things like spotify for the five or so years. After using
-        it for that long that I only really use it to listen to music that I
-        already enjoy and not using it to 'Discover' whatever their service thinks
-        I'll enjoy.
-        </p>
-        <p>
-        So in cutting those services out of my life I use tools to
-        download those playlists that ive curated on spotify and such to then
-        put them on my iPod, or in this case some Minidiscs!
-        </p>
-        <p>
-        Heres some of the playlists ive burn to discs so far :)
-        </p>
-      </div>
-
-      <table width="50%">
-        <tbody>
-          <tr>
-            <td>
-              <div class="minidisc">
-                <img src="minidisc_template.png" width="189.5"height="180.5">
+    <br>
+    <table>
+      <tr>
+        <td class="disc_padding">
+          <div id="disc_1">
+          <input class="smallcard" type="radio" id="card1" name="idplease">
+          <label for="card1">
+            <img src="minidisc_template.png" width="189.5"height="180.5" style="margin-bottom:4px; cursor: zoom-in;">
+          </label>
+          <div class="darkness"></div>
+            <div class="idwrap3lol" title="click to set the card back down">
+              <input type="radio" id="card1_open" name="idplease">
+              <label for="card1_open">
+                <div class="idwrap2">
+                  <div class="idcard">
+                    <div class="idcardcont">
+                      <div class="idcardbg"></div>
+                      <div class="info">
+                        <table class="sticker">
+                          <tr><th>ｲﾝｷ-ｽﾞﾐｯｸｽ inkys mix Vol 1</th></tr>
+                          <tr><td class="tdots">HOME - Resonance</td></tr>
+                          <tr><td class="tdots">MF DOOM - Coffin Nails</td></tr>
+                          <tr><td class="tdots">Binary Rondo</td></tr>
+                          <tr><td class="tdots">DJ Dove - Illusions</td></tr>
+                          <tr><td class="tdots">Friday Chinatown</td></tr>
+                          <tr><td class="tdots">Jobii - Pho Kit</td></tr>
+                          <tr><td class="tdots">Jobii - 36mm</td></tr>
+                          <tr><td class="tdots">Home - Sunshower</td></tr>
+                          <tr><td class="tdots">Matt Watson - No Nut November</td></tr>
+                          <tr><td class="tdots">Vladimir Cauchemar - Aulos</td></tr>
+                          <tr><td class="tdots">Lakim - A Pimp Named Slickback</td></tr>
+                          <tr><td class="tdots">Capcom Sound Team - Snowland</td></tr>
+                          <tr><td class="tdots">Lone - Alpha Wheel</td></tr>
+                          <tr><td class="tdots">Sweet Trip - Dsco</td></tr>
+                          <tr><td class="tdots">FUJI SPEEDWAY (old version)</td></tr>
+                          <tr><td class="tdots">Lone - Triple Helix</td></tr>
+                          <tr><td class="tdots">ClariS - ｺﾈｸﾄ</td></tr>
+                          <tr><td class="tdots">RR R4 - On Your Way</td></tr>
+                          <tr><td class="tdots">pizza session</td></tr>
+                          <tr><td class="tdots">Funk Tribu - Phonky Tribu</td></tr>
+                          <tr><td class="tdots">RR R4 - Move Me</td></tr>
+                          <tr><td class="tdots">PARKGOLF - Overslept</td></tr>
+                          <tr><td class="tdots">Outkast - B.O.B. (Bombs Over Baghdad)</td></tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </td>
+        <td class="disc_padding">
+          <div id="disc_2">
+            <input class="smallcard" type="radio" id="card2" name="idplease">
+            <label for="card2">
+              <img src="minidisc_template.png" width="189.5"height="180.5" style="margin-bottom:4px; cursor: zoom-in;">
+            </label>
+            <div class="darkness"></div>
+              <div class="idwrap3lol" title="click to set the card back down">
+                <input type="radio" id="card2_open" name="idplease">
+                <label for="card2_open">
+                  <div class="idwrap2">
+                    <div class="idcard">
+                      <div class="idcardcont">
+                        <div class="idcardbg"></div>
+                        <div class="info">
+                          <table class="sticker">
+                            <tr><th>Lofi-playlist 1-32</th></tr>
+                            <tr><td class="tdots">Jobii - Pho Kit</td></tr>
+                            <tr><td class="tdots">Timothy Infinite - Kale</td></tr>
+                            <tr><td class="tdots">Jobii - Linearity</td></tr>
+                            <tr><td class="tdots">Guustavv - Warm Waters</td></tr>
+                            <tr><td class="tdots">Justnormal - Longings</td></tr>
+                            <tr><td class="tdots">Justnormal - getting there</td></tr>
+                            <tr><td class="tdots">Justnormal - Bluish</td></tr>
+                            <tr><td class="tdots">Yomoti - Restless Minds</td></tr>
+                            <tr><td class="tdots">Justnormal - Po' Prayer (Lofi Version)</td></tr>
+                            <tr><td class="tdots">Timothy Infinite - Lazy</td></tr>
+                            <tr><td class="tdots">Sarah the Illstrumentalist - Malachite</td></tr>
+                            <tr><td class="tdots">Gregory David - Coasting</td></tr>
+                            <tr><td class="tdots">Guustavv - Petrified Pork</td></tr>
+                            <tr><td class="tdots">[ocean jams] - Nebulas</td></tr>
+                            <tr><td class="tdots">Jobii - Zero</td></tr>
+                            <tr><td class="tdots">Dylan Sitts - Excursion</td></tr>
+                            <tr><td class="tdots">Dusty Decks - Ring Wear Saga</td></tr>
+                            <tr><td class="tdots">Jobii - 36mm</td></tr>
+                            <tr><td class="tdots">Matt Large - Coffeehouse by Large</td></tr>
+                            <tr><td class="tdots">Matt Large - Blue Nights and Yellow Days</td></tr>
+                            <tr><td class="tdots">Auxjack - Three Best Friends</td></tr>
+                            <tr><td class="tdots">Dugway - Nep Tune</td></tr>
+                            <tr><td class="tdots">Justnormal - foreverlasting</td></tr>
+                            <tr><td class="tdots">Lax Superlative - State of Mine</td></tr>
+                            <tr><td class="tdots">baegel - Sunset Boulevard</td></tr>
+                            <tr><td class="tdots">Wendy Marcini - Like a Song from Yesterday</td></tr>
+                            <tr><td class="tdots">Sarah the Illstrumentalist - Care Package</td></tr>
+                            <tr><td class="tdots">baegel - Back in My Dreams</td></tr>
+                            <tr><td class="tdots">Gregory David - Enter = Patiently</td></tr>
+                            <tr><td class="tdots">Sarah the Illstrumentalist - Find the Good</td></tr>
+                            <tr><td class="tdots">Justnormal - Winter at the Lake</td></tr>
+                            <tr><td class="tdots">Osoku - Haku</td></tr>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </label>
               </div>
-            </td>
-            <td>
-              <div class="minidisc">
-                <img src="minidisc_template.png" width="189.5"height="180.5">
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="minidisc">
-                <img src="minidisc_template.png" width="189.5"height="180.5">
-              </div>
-            </td>
-            <td>
-              <div class="minidisc">
-                <img src="minidisc_template.png" width="189.5"height="180.5">
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
 
-    </div>
 
-      <div class="dynamic">
-        context menu coming soon
-    </div>
-  </body>
+    <div class="dynamic">
+      context menu coming soon
+  </div>
+</body>
 </html>
